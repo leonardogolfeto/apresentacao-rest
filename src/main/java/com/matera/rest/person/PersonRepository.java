@@ -12,5 +12,7 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
 
     Person findByTaxId(Long taxId);
 
+    List<Person> findAll();
+
     List<Person> findAll(Specification<Person> spec);
 }

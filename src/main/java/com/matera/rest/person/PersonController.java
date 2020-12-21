@@ -24,6 +24,11 @@ public class PersonController {
         return personService.getPersonByTaxId(taxId);
     }
 
+    @GetMapping("/sex/{sex}")
+    public List<Person> getPersonBySex(@PathVariable("sex") Long sex){
+        return personService.getPersonOnlyOneSex(sex);
+    }
+
     @GetMapping
     public List<Person> getPersonBy(@RequestParam(value = "taxId", required = false) Long taxId,
                                       @RequestParam(value = "firstName", required = false) String firstName,
