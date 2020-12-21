@@ -19,7 +19,7 @@ public class PersonConfig {
 
     @PostConstruct
     private void init(){
-        for(int i = 0; i<11; i++){
+        for(int i = 0; i<10; i++){
             personRepository.save(getPerson(i));
         }
     }
