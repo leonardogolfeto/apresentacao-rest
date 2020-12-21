@@ -1,4 +1,4 @@
-package com.matera.rest;
+package com.matera.rest.config;
 
 import com.matera.rest.person.Person;
 import com.matera.rest.person.PersonRepository;
@@ -6,10 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 @Configuration
 public class PersonConfig {
@@ -26,8 +25,19 @@ public class PersonConfig {
 
     private Person getPerson(int index) {
 
-        List<String> names = Arrays.asList("Leonel",
-                "Leonardo",
+        List<Long> taxIds = Arrays.asList(11130913988L,
+                17600659000L,
+                10508510058L,
+                83905087022L,
+                52557200034L,
+                23511361010L,
+                42908466023L,
+                51126319023L,
+                13735125042L,
+                82132300003L);
+
+        List<String> names = Arrays.asList("Leonardo",
+                "Leonel",
                 "Joao",
                 "Maria",
                 "Tiao",
@@ -37,8 +47,8 @@ public class PersonConfig {
                 "Gabriel",
                 "Caio");
 
-        List<String> lastNames = Arrays.asList("Tasso",
-                "Golfeto",
+        List<String> lastNames = Arrays.asList("Golfeto",
+                "Tasso",
                 "Nakamura",
                 "Cuesta",
                 "Seabra",
@@ -48,22 +58,22 @@ public class PersonConfig {
                 "Dos Anjos",
                 "Dos Santos");
 
-        List<String> citys = Arrays.asList("Maringá",
+        List<String> citys = Arrays.asList("Maringa",
                 "Campinas",
                 "Porto Alegre",
                 "Canada",
-                "São Paulo",
+                "Sao Paulo",
                 "Curitiba",
-                "Cambé",
+                "Cambe",
                 "Jandaia do Sul",
                 "Marialva",
                 "Mandaguari");
 
-        return new Person(new Random().nextLong(),
-                names.get(index),
-                lastNames.get(index),
-                citys.get(index),
-                new Date());
+        return new Person(taxIds.get(index),
+                            names.get(index),
+                            lastNames.get(index),
+                            citys.get(index),
+                            LocalDate.now());
 
     }
 

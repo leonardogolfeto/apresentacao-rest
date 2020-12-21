@@ -3,15 +3,24 @@ package com.matera.rest.person;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
-public class Person {
+public class Person implements PersonProjection {
 
     public Person() {
     }
 
-    public Person(Long taxId, String firstName, String lastName, String city, Date birthDate) {
+    public Person(PersonDTO personDTO) {
+        this.taxId = personDTO.getTaxId();
+        this.firstName = personDTO.getFirstName();
+        this.lastName = personDTO.getLastName();
+        this.city = personDTO.getCity();
+        this.birthDate = personDTO.getBirthDate();
+    }
+
+
+    public Person(Long taxId, String firstName, String lastName, String city, LocalDate birthDate) {
         this.taxId = taxId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -33,8 +42,9 @@ public class Person {
     private String city;
 
     @Column(name = "BIRTH_DATE")
-    private Date birthDate;
+    private LocalDate birthDate;
 
+    @Override
     public Long getTaxId() {
         return taxId;
     }
@@ -43,6 +53,7 @@ public class Person {
         this.taxId = taxId;
     }
 
+    @Override
     public String getFirstName() {
         return firstName;
     }
@@ -51,6 +62,7 @@ public class Person {
         this.firstName = firstName;
     }
 
+    @Override
     public String getLastName() {
         return lastName;
     }
@@ -59,6 +71,7 @@ public class Person {
         this.lastName = lastName;
     }
 
+    @Override
     public String getCity() {
         return city;
     }
@@ -67,11 +80,12 @@ public class Person {
         this.city = city;
     }
 
-    public Date getBirthDate() {
+    @Override
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 }

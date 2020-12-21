@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "9d243bc8-0009-49ae-a199-74d70d8d35e3",
+		"name": "Treinamento Rest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Insert Person",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"taxId\" : \"11130913988\",\n    \"firstName\" : \"Leonardo\",\n    \"lastName\" : \"Golfeto\",\n    \"city\" : \"Maringa\",\n    \"birthDate\" : \"1999-08-16\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/persons",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alter Person",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"taxId\" : \"11130913988\",\n    \"firstName\" : \"Leonardo\",\n    \"lastName\" : \"Golfeto\",\n    \"city\" : \"Campinas\",\n    \"birthDate\" : \"1999-08-16\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/persons/11130913988",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"persons",
+						"11130913988"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get one person",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/persons/11130913988",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"persons",
+						"11130913988"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all person",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/persons",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"persons"
+					],
+					"query": [
+						{
+							"key": "taxId",
+							"value": "11130913988",
+							"disabled": true
+						},
+						{
+							"key": "firstName",
+							"value": "Leonardo",
+							"disabled": true
+						},
+						{
+							"key": "lastName",
+							"value": "Golfeto",
+							"disabled": true
+						},
+						{
+							"key": "city",
+							"value": "Maringa",
+							"disabled": true
+						},
+						{
+							"key": "birthDate",
+							"value": "1999-08-16",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete person",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/persons/11130913988",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"persons",
+						"11130913988"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
