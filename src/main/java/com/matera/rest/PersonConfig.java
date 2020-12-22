@@ -26,6 +26,17 @@ public class PersonConfig {
 
     private Person getPerson(int index) {
 
+        List<Long> taxIds = Arrays.asList(11130913988L,
+                17600659000L,
+                10508510058L,
+                83905087022L,
+                52557200034L,
+                23511361010L,
+                42908466023L,
+                51126319023L,
+                13735125042L,
+                82132300003L);
+
         List<String> names = Arrays.asList("Leonel",
                 "Leonardo",
                 "Joao",
@@ -59,7 +70,7 @@ public class PersonConfig {
                 "Marialva",
                 "Mandaguari");
 
-        return new Person(new Random().nextLong(),
+        return new Person(taxIds.get(index),
                 names.get(index),
                 lastNames.get(index),
                 citys.get(index),

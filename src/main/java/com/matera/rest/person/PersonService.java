@@ -33,8 +33,10 @@ public class PersonService {
         Specification<Person> personSpecification;
 
         personSpecification = Specification.where(getSpecByParam("taxId", taxId))
-                .and(getSpecByParam("firstName", firstName)).and(getSpecByParam("lastName", lastName))
-                .and(getSpecByParam("city", city)).and(getSpecByParam("birthDate", birthDate));
+                .and(getSpecByParam("firstName", firstName))
+                .and(getSpecByParam("lastName", lastName))
+                .and(getSpecByParam("city", city))
+                .and(getSpecByParam("birthDate", birthDate));
 
         return personRepository.findAll(personSpecification);
     }
@@ -47,5 +49,4 @@ public class PersonService {
 
         return (root, criteriaQuery, cb) -> cb.isNotNull(root.get(name));
     }
-
 }

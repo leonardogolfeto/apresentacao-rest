@@ -10,11 +10,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MvcResult;
 
 import com.jayway.jsonpath.JsonPath;
+import com.matera.rest.utils.TaxIdUtils;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = RestApplication.class, webEnvironment = RANDOM_PORT)
@@ -22,6 +24,9 @@ class TestPersons extends AbstractTest{
 
     private static final String GET_PERSONS_ENDPOINT = "/v1/persons";
     private static final String GET_PERSONS_BY_SEX_ENDPOINT = "/v1/persons/sex/";
+
+    @Autowired
+    private TaxIdUtils taxIdUtils;
 
     @Test
     public void testApiPersonsShouldSucess() throws Exception {
@@ -41,9 +46,7 @@ class TestPersons extends AbstractTest{
                 .andExpect(status().isOk()).andReturn();
 
         Long taxId = JsonPath.read(mans.getResponse().getContentAsString(), "[0].taxId");
-
         assertTrue(taxId % 2 == 0);
-
     }
 
     @Test
@@ -52,10 +55,14 @@ class TestPersons extends AbstractTest{
                 .andExpect(status().isOk()).andReturn();
 
         Long taxId = JsonPath.read(womans.getResponse().getContentAsString(), "[0].taxId");
-
         assertFalse(taxId % 2 == 0);
+    }
+
+    @Test
+    public void validPersonType(){
 
     }
+
 }
 
 
