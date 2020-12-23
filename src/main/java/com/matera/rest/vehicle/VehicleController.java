@@ -1,11 +1,13 @@
 package com.matera.rest.vehicle;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("v1/vehicles")
+@RequestMapping("/v1/vehicles")
 public class VehicleController {
 
     private final VehicleService vehicleService;
@@ -15,5 +17,10 @@ public class VehicleController {
         this.vehicleService = vehicleService;
     }
 
-    //TODO Implement HTTP request methods
+    @GetMapping("/{licensePlate}")
+    public Vehicle getVehicleByLicensePlate(@PathVariable String licensePlate) {
+        return vehicleService
+                .findVehicleByLicensePlate(licensePlate)
+                .orElse(null);
+    }
 }
