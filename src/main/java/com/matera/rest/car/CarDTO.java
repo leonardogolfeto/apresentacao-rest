@@ -15,7 +15,7 @@ public class CarDTO implements CarProjection {
 
     private String carModel;
 
-    private String carColor;
+    private String carBrand;
 
     private String carCountry;
 
@@ -37,8 +37,8 @@ public class CarDTO implements CarProjection {
     }
 
     @Override
-    public String getCarColor() {
-        return carColor;
+    public String getCarBrand() {
+        return carBrand;
     }
 
     @Override

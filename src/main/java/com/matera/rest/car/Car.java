@@ -19,11 +19,10 @@ public class Car implements CarProjection{
     private String carModel;
 
     @Column(name = "CAR_COLOR")
-    private String carColor;
+    private String carBrand;
 
     @Column(name = "CAR_COUNTRY")
     private String carCountry;
-
 
     @Column(name = "CAR_OWNER")
     private Integer carOwnerId;
@@ -34,11 +33,11 @@ public class Car implements CarProjection{
 
     }
 
-    public Car(Integer carId, Integer carReleaseYear, String carModel, String carColor, String carCountry, Integer carOwnerId) {
+    public Car(Integer carId, Integer carReleaseYear, String carModel, String carBrand, String carCountry, Integer carOwnerId) {
         this.carId = carId;
         this.carReleaseYear = carReleaseYear;
         this.carModel = carModel;
-        this.carColor = carColor;
+        this.carBrand = carBrand;
         this.carCountry = carCountry;
         this.carOwnerId = carOwnerId;
     }
@@ -47,7 +46,7 @@ public class Car implements CarProjection{
         this.carId = carDTO.getCarId();
         this.carReleaseYear = carDTO.getCarReleaseYear();
         this.carModel = carDTO.getCarModel();
-        this.carColor = carDTO.getCarColor();
+        this.carBrand = carDTO.getCarBrand();
         this.carCountry = carDTO.getCarCountry();
         this.carOwnerId = carDTO.getCarOwnerId();
     }
@@ -79,12 +78,12 @@ public class Car implements CarProjection{
         this.carModel = carModel;
     }
 
-    public String getCarColor() {
-        return carColor;
+    public String getCarBrand() {
+        return carBrand;
     }
 
-    public void setCarColor(String carColor) {
-        this.carColor = carColor;
+    public void setCarBrand(String carBrand) {
+        this.carBrand = carBrand;
     }
 
     public String getCarCountry() {

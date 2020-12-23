@@ -8,7 +8,7 @@ public interface CarProjection {
 
     String getCarModel();
 
-    String getCarColor();
+    String getCarBrand();
 
     String getCarCountry();
 
