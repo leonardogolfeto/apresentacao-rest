@@ -12,6 +12,6 @@ public interface CarProjection {
 
     String getCarCountry();
 
-    Integer getCarOwnerId();
+    Long getCarOwnerId();
 
 }

@@ -25,7 +25,7 @@ public class Car implements CarProjection{
     private String carCountry;
 
     @Column(name = "CAR_OWNER")
-    private Integer carOwnerId;
+    private Long carOwnerId;
 
     // Constructor's
 
@@ -33,7 +33,7 @@ public class Car implements CarProjection{
 
     }
 
-    public Car(Integer carId, Integer carReleaseYear, String carModel, String carBrand, String carCountry, Integer carOwnerId) {
+    public Car(Integer carId, Integer carReleaseYear, String carModel, String carBrand, String carCountry, Long carOwnerId) {
         this.carId = carId;
         this.carReleaseYear = carReleaseYear;
         this.carModel = carModel;
@@ -94,11 +94,11 @@ public class Car implements CarProjection{
         this.carCountry = carCountry;
     }
 
-    public Integer getCarOwnerId() {
+    public Long getCarOwnerId() {
         return carOwnerId;
     }
 
-    public void setCarOwnerId(Integer carOwnerId) {
+    public void setCarOwnerId(Long carOwnerId) {
         this.carOwnerId = carOwnerId;
     }
 }

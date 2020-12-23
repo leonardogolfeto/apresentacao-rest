@@ -19,7 +19,7 @@ public class CarDTO implements CarProjection {
 
     private String carCountry;
 
-    private Integer carOwnerId;
+    private Long carOwnerId;
 
     @Override
     public Integer getCarId() {
@@ -47,7 +47,7 @@ public class CarDTO implements CarProjection {
     }
 
     @Override
-    public Integer getCarOwnerId() {
+    public Long getCarOwnerId() {
         return carOwnerId;
     }
 }

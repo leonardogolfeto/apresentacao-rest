@@ -10,6 +10,10 @@ public class PersonDTO implements PersonProjection {
     public PersonDTO() {
     }
 
+    public PersonDTO(Person person){
+
+    }
+
     @NotNull
     private Long taxId;
 
