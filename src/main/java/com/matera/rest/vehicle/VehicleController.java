@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/v1/vehicles")
 public class VehicleController {
@@ -20,7 +22,12 @@ public class VehicleController {
     @GetMapping("/{licensePlate}")
     public Vehicle getVehicleByLicensePlate(@PathVariable String licensePlate) {
         return vehicleService
-                .findVehicleByLicensePlate(licensePlate)
+                .getVehicleByLicensePlate(licensePlate)
                 .orElse(null);
+    }
+
+    @GetMapping
+    public List<Vehicle> getVehicles() {
+        return vehicleService.getVehicles();
     }
 }
