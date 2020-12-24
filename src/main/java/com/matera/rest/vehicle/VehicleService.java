@@ -1,5 +1,6 @@
 package com.matera.rest.vehicle;
 
+import com.matera.rest.person.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -56,5 +57,17 @@ public class VehicleService {
 
     public void deleteVehicle(final String licensePlate){
         vehicleRepository.deleteById(licensePlate);
+    }
+
+    public Vehicle alterVehicle(final String licensePlate, final VehicleDTO vehicleDTO){
+
+        Vehicle alteredVehicle = vehicleRepository.getOne(licensePlate);
+        alteredVehicle.setLicensePlate(Optional.ofNullable(vehicleDTO.getLicensePlate()).orElse(alteredVehicle.getLicensePlate()));
+        alteredVehicle.setModel(Optional.ofNullable(vehicleDTO.getModel()).orElse(alteredVehicle.getModel()));
+        alteredVehicle.setBrand(Optional.ofNullable(vehicleDTO.getBrand()).orElse(alteredVehicle.getBrand()));
+        alteredVehicle.setColor(Optional.ofNullable(vehicleDTO.getColor()).orElse(alteredVehicle.getColor()));
+        alteredVehicle.setYear(Optional.ofNullable(vehicleDTO.getYear()).orElse(alteredVehicle.getYear()));
+
+        return vehicleRepository.save(alteredVehicle);
     }
 }

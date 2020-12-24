@@ -18,7 +18,7 @@ public class VehicleController {
     }
 
     @GetMapping("/{licensePlate}")
-    public Vehicle getVehicleByLicensePlate(@PathVariable final String licensePlate) {
+    public Vehicle getVehicleByLicensePlate(@PathVariable("licensePlate") final String licensePlate) {
         return vehicleService
                 .getVehicleByLicensePlate(licensePlate)
                 .orElse(null);
@@ -43,5 +43,13 @@ public class VehicleController {
     @DeleteMapping("/{licensePlate}")
     public void deleteVehicle(@PathVariable final String licensePlate){
         vehicleService.deleteVehicle(licensePlate);
+    }
+
+    @PutMapping("/{licensePlate}")
+    public Vehicle alterVehicle(
+            @PathVariable("licensePlate") final String licensePlate,
+            @RequestBody final VehicleDTO vehicleDTO
+    ){
+        return vehicleService.alterVehicle(licensePlate, vehicleDTO);
     }
 }
