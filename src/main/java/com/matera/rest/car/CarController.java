@@ -16,8 +16,8 @@ public class CarController {
     private CarService carService;
 
 
-    @GetMapping
-    public List<Car> all() {
+    @GetMapping("/all")
+    public List<Car> findAll() {
         return carService.findAll();
     }
 
@@ -36,17 +36,23 @@ public class CarController {
         return carService.insertCar(car);
     }
 
-    /*
+
     @GetMapping
-    public List<Car> getCars(@PathVariable("carId") Long carId,
-                      @PathVariable("licensePlate") String licensePlate,
-                      @PathVariable("color") String color,
-                      @PathVariable("model") String model,
-                      @PathVariable("brand") String brand,
-                      @PathVariable("year") String year) {
+    public List<Car> getCarsBy(@RequestParam (value = "carId", required = false) Long carId,
+                             @RequestParam (value = "licensePlate", required = false) String licensePlate,
+                             @RequestParam (value = "color", required = false) String color,
+                             @RequestParam (value = "model", required = false) String model,
+                             @RequestParam (value = "brand", required = false) String brand,
+                             @RequestParam (value = "year", required = false) String year) {
+
         return carService.getCars(carId, licensePlate, color, model, brand, year);
     }
-     */
+
+    @PutMapping("/{carId}")
+    public Car alterCar(@PathVariable (value = "carId") Long carId, @RequestBody @Valid CarDTO car) {
+        return carService.alterCar(carId, car);
+    }
+
 
 
 }
