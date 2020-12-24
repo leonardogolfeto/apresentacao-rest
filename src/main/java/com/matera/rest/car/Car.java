@@ -3,6 +3,7 @@ package com.matera.rest.car;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Car implements CarProjection {
@@ -21,7 +22,7 @@ public class Car implements CarProjection {
         this.year = carDTO.getYear();
     }
 
-    public Car(carId, licensePlate, color, model, brand, year) {
+    public Car(Long carId, String licensePlate, String color, String model, String brand, Integer year) {
         this.carId = carId;
         this.licensePlate = licensePlate;
         this.color = color;
