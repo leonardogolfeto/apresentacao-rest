@@ -3,6 +3,7 @@ package com.matera.rest.vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -51,5 +52,9 @@ public class VehicleService {
 
     public Vehicle insertVehicle (VehicleDTO vehicle) {
         return vehicleRepository.save(new Vehicle(vehicle));
+    }
+
+    public void deleteVehicle(final String licensePlate){
+        vehicleRepository.deleteById(licensePlate);
     }
 }

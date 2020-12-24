@@ -40,5 +40,8 @@ public class VehicleController {
         return vehicleService.insertVehicle(vehicle);
     }
 
-
+    @DeleteMapping("/{licensePlate}")
+    public void deleteVehicle(@PathVariable final String licensePlate){
+        vehicleService.deleteVehicle(licensePlate);
+    }
 }
