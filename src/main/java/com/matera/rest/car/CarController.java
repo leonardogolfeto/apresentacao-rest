@@ -1,8 +1,11 @@
 package com.matera.rest.car;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
+import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -50,7 +53,14 @@ public class CarController {
 
     @PutMapping("/{carId}")
     public Car alterCar(@PathVariable (value = "carId") Long carId, @RequestBody @Valid CarDTO car) {
-        return carService.alterCar(carId, car);
+        try {
+            return carService.alterCar(carId, car);
+        } catch (EntityNotFoundException entityNotFoundException) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Id não encontrado", entityNotFoundException);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return null;
+        }
     }
 
 

@@ -63,6 +63,7 @@ public class CarService {
     public Car alterCar(Long carId, CarDTO car) {
         Car carAux = carRepository.getOne(carId);
 
+
         carAux.setCarId(Optional.ofNullable(car.getCarId()).orElse(carAux.getCarId()));
         carAux.setLicensePlate(Optional.ofNullable(car.getLicensePlate()).orElse(carAux.getLicensePlate()));
         carAux.setColor(Optional.ofNullable(car.getColor()).orElse(carAux.getColor()));
@@ -72,6 +73,5 @@ public class CarService {
 
 
         return carRepository.save(carAux);
-
     }
 }
