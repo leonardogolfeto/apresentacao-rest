@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/cars")
@@ -24,26 +27,37 @@ public class CarController {
     private CarService carService;
 
     @GetMapping("/{carId}")
-    public Car getCarById(@PathVariable("carId") Integer carId) {                   // Find Car By ID
+    public Car getCarById(@PathVariable("carId") Integer carId) {                       // Find Car By ID
         return carService.getCarByCarId(carId);
     }
 
     @GetMapping
-    public List<Car> getCars() {                                                    // Find Cars
+    public List<Car> getCars() {                                                        // Find Cars
         return carService.findAll();
     }
 
     @GetMapping("/search/{carId}")
-    public PersonAndCar getCarOwnerByCarId(@PathVariable("carId") Integer carId) {  // Find the Owner Car By ID
+    public List<Object> getCarOwnerByCarId(@PathVariable("carId") Integer carId) {  // Find Owner Car By ID
         Car car = carService.getCarByCarId(carId);
         Person person = personController.getPersonById(car.getCarOwnerId());
-        return new PersonAndCar(person, car);
+        ArrayList<Object> carAndOwner = new ArrayList<Object>();
+        carAndOwner.add(car);carAndOwner.add(person);
+        return carAndOwner;
     }
 
-    @PostMapping
-    public Car insertCar(@RequestBody @Valid Car car) {                             // Insert a Car
+    @PostMapping("/insert")
+    public Car insertCar(@RequestBody @Valid CarDTO car) {                                 // Insert a Car
         return carService.insertCar(car);
     }
 
+    @DeleteMapping("/delete/{carId}")
+    public void deleteCar(@PathVariable("carId") Integer carId) {
+        carService.deleteCar(carId);
+    }
+
+    @PutMapping("/put/{carId}")                                                     // Edit
+    public Car modifyCar(@PathVariable("carId") Integer carId, @RequestBody CarDTO carDTO ) {
+        return carService.alterCar(carId, carDTO);
+    }
 
 }
