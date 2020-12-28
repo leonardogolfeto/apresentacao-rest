@@ -64,7 +64,7 @@ public class CarService {
         Car carAux = carRepository.getOne(carId);
 
 
-        carAux.setCarId(Optional.ofNullable(car.getCarId()).orElse(carAux.getCarId()));
+        //carAux.setCarId(Optional.ofNullable(car.getCarId()).orElse(carAux.getCarId()));
         carAux.setLicensePlate(Optional.ofNullable(car.getLicensePlate()).orElse(carAux.getLicensePlate()));
         carAux.setColor(Optional.ofNullable(car.getColor()).orElse(carAux.getColor()));
         carAux.setBrand(Optional.ofNullable(car.getBrand()).orElse(carAux.getBrand()));

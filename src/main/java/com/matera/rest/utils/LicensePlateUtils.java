@@ -20,7 +20,7 @@ public class LicensePlateUtils {
             } else if (licensePlate.charAt(3) == '-' && licensePlate.length() == 8) {
                 return licensePlate;
             } else if (Character.isDigit(licensePlate.charAt(4)) && licensePlate.length() == 7) {
-                return licensePlate.substring(0, 2) + "-" + licensePlate.substring(3, 6);
+                return licensePlate.substring(0, 3) + "-" + licensePlate.substring(3, 7);
             }
         }
         return null;
